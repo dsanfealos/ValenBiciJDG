@@ -38,15 +38,12 @@ public class ValenbiciAPI {
                 try {
                     JSONObject jsonObject = new JSONObject(result);
                     JSONArray resultsArray = jsonObject.getJSONArray("results");
-                    for(Object r: resultsArray){
-                        String json = r.toString();
-                        String address = json.substring(json.indexOf("address")+9, json.indexOf("ticket")-2);
-                        int disponibles = Integer.parseInt(json.substring(json.indexOf("available")+11, json.indexOf("free")-2));
-                        int libres = Integer.parseInt(json.substring(json.indexOf("free")+6, json.indexOf("open")-2));
-                        System.out.println("---------------------------------------------");
-                        System.out.println("Dirección de estación: " + address);
-                        System.out.println("Bicis disponibles: " + disponibles);
-                        System.out.println("Espacios libres: " + libres);
+                    for(int i = 0; i <= resultsArray.length() - 1; i++){
+                        JSONObject jsonElement = resultsArray.getJSONObject(i);
+                        System.out.println("----------------------------------------------------");
+                        System.out.println("Dirección de estación: " + jsonElement.get("address"));
+                        System.out.println("Bicis disponibles: " + jsonElement.get("available"));
+                        System.out.println("Espacios libres: " + jsonElement.get("free"));
                     }
                 } catch (
                         org.json.JSONException e) {
