@@ -68,21 +68,11 @@ public class ConexionBDD extends javax.swing.JFrame {
                 jTxtInpNumFocusLost(evt);
             }
         });
-        jTxtInpNum.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTxtInpNumActionPerformed(evt);
-            }
-        });
 
         jBtnDatos.setText("Datos");
         jBtnDatos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnDatosMouseClicked(evt);
-            }
-        });
-        jBtnDatos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnDatosActionPerformed(evt);
             }
         });
 
@@ -92,21 +82,11 @@ public class ConexionBDD extends javax.swing.JFrame {
                 jBtnConectarMouseClicked(evt);
             }
         });
-        jBtnConectar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnConectarActionPerformed(evt);
-            }
-        });
 
         jBtnAdd.setText("Añadir a BDD");
         jBtnAdd.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnAddMouseClicked(evt);
-            }
-        });
-        jBtnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnAddActionPerformed(evt);
             }
         });
 
@@ -126,11 +106,6 @@ public class ConexionBDD extends javax.swing.JFrame {
         jBtnDesconectar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jBtnDesconectarMouseClicked(evt);
-            }
-        });
-        jBtnDesconectar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBtnDesconectarActionPerformed(evt);
             }
         });
 
@@ -194,24 +169,22 @@ public class ConexionBDD extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jBtnDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDatosActionPerformed
-        // TODO add your handling code here:
-        numEst = Integer.parseInt(jTxtInpNum.getText());
-        dJSon.mostrarDatos(numEst);
-        jLblDatos.setText("Datos de estaciones:");
-        jTextArea1.setText(dJSon.getDatos());
-    }//GEN-LAST:event_jBtnDatosActionPerformed
-
-    private void jBtnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnConectarActionPerformed
+    private void jBtnConectarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnConectarMouseClicked
         // TODO add your handling code here:
         conector();
         jBtnAdd.setEnabled(true);
-    }//GEN-LAST:event_jBtnConectarActionPerformed
+    }//GEN-LAST:event_jBtnConectarMouseClicked
 
-    private void jBtnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnAddActionPerformed
+    private void jBtnDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnDatosMouseClicked
+        // TODO add your handling code here:
+        dJSon.mostrarDatos(numEst);
+        jLblDatos.setText("Datos de estaciones:");
+        jTextArea1.setText(dJSon.getDatos());
+    }//GEN-LAST:event_jBtnDatosMouseClicked
+
+    private void jBtnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnAddMouseClicked
         // TODO add your handling code here:
         try{      
-            //Todo coger los datos del json
             String[] values = dJSon.getValues();
             String estacionId = "";
             String direccion = "";
@@ -236,8 +209,7 @@ public class ConexionBDD extends javax.swing.JFrame {
                     "VALUES('"+estacionId+"','"+direccion+"','"+bicisDisponibles+"'," +
                         "'"+anclajesLibres+"','"+estadoOperativo+"', CURRENT_TIMESTAMP, POINT(" + latitud + "," + longitud + "));";
                 
-                s.execute(query);
-                
+                s.execute(query);        
                 
             }         
             
@@ -247,45 +219,12 @@ public class ConexionBDD extends javax.swing.JFrame {
         catch (SQLException e) {
             jLblAdd.setText("Error de conexion" + e);
         }
-    }//GEN-LAST:event_jBtnAddActionPerformed
-
-    private void jBtnDesconectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDesconectarActionPerformed
-        // TODO add your handling code here:
-        try {             
-            // TODO Añade aquí el código para cerrar la conexión con la Base de Datos   
-            
-            con.close();            
-            jLblEstado.setText("Desconectado");
-        } catch (SQLException ex) {
-            Logger.getLogger(ConexionBDD.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jBtnDesconectarActionPerformed
-
-    private void jTxtInpNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTxtInpNumActionPerformed
-        // TODO add your handling code here:
-        numEst = Integer.parseInt(jTxtInpNum.getText());
-        dJSon.mostrarDatos(numEst);
-        jLblDatos.setText("Datos estaciones:");
-        jTextArea1.setText(dJSon.getDatos());
-    }//GEN-LAST:event_jTxtInpNumActionPerformed
-
-    private void jBtnConectarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnConectarMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnConectarMouseClicked
-
-    private void jBtnDatosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnDatosMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jBtnDatosMouseClicked
-
-    private void jBtnAddMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnAddMouseClicked
-        // TODO add your handling code here:
     }//GEN-LAST:event_jBtnAddMouseClicked
 
     private void jBtnDesconectarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtnDesconectarMouseClicked
         // TODO add your handling code here:
         try {             
-            // TODO Añade aquí el código para cerrar la conexión con la Base de Datos   
-            
+            // TODO Añade aquí el código para cerrar la conexión con la Base de Datos               
             con.close();            
             jLblEstado.setText("Desconectado");
         } catch (SQLException ex) {
