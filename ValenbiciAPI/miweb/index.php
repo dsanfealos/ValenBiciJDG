@@ -35,6 +35,15 @@
             tr:hover {
                 background-color: #ddd;
             }
+            #btnMapa{
+                background-color: #4CAF50;
+                color: white;
+                margin: 0 auto;
+                margin-right: 10%;
+                margin-left: 10%;
+                width: 80%;
+                text-align: center;
+            }
         </style> 
     </head> 
     <body>  
@@ -111,9 +120,10 @@
                 echo "<td>" . $station['total'] . "</td>";
                 echo "<td>" . $station['updated_at'] . "</td>";
                 echo "<td>Lon(" . $station['lon'] . "), Lat(" . $station['lat'] . ")</td>";
-                echo "</tr>";
+                echo "</tr>";                
             } echo "</table>";
-        }
-        ?> 
+        }        
+        ?>
+        <a href='mapearbicis.php'><button id='btnMapa'>Ver Mapa de Estaciones</button><a>
     </body> 
 </html> 
