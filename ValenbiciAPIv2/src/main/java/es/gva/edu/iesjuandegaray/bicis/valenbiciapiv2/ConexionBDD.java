@@ -23,9 +23,9 @@ public class ConexionBDD extends javax.swing.JFrame {
     private static int numEst = 3;
 
     private static final String driver = "com.mysql.jdbc.Driver";
-    private static final String user = "daniel";
-    private static final String pass = "clave123";
-    private static final String url = "jdbc:mysql://localhost:3306/valenbicidb?";
+    private static final String user = "admin";
+    private static final String pass = "Patata-9&Ceboia";
+    private static final String url = "jdbc:mysql://databasedmp.c32z3apotslk.us-east-1.rds.amazonaws.com/valenbicidb?";
     
     /**
      * Creates new form ConexionBDD
